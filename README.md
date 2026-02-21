@@ -85,7 +85,7 @@ The ETL system:
 
 **SQL Analytics Performed**
 
--After loading data into MySQL, the pipeline executes several analytics queries and exports them as CSV reports:
+After loading data into MySQL, the pipeline executes several analytics queries and exports them as CSV reports:
 
 1. Total revenue per year
 
@@ -99,7 +99,7 @@ The ETL system:
 
 **Visual Dashboards**
 
-- Using matplotlib, the pipeline generates:
+Using matplotlib, the pipeline generates:
 
 1. Annual revenue charts
 
