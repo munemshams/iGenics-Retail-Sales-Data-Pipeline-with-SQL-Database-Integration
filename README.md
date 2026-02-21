@@ -30,28 +30,9 @@ A cleaned dataset sample and complete pipeline logic are provided for demonstrat
 
 - project_summary.txt → output summary file rendered from python script
 
-- 5 CSV output files :
+- 5 CSV output files : Total revenue per year, Total net income per year, Most profitable week, Average weekly revenue per year, Weekly revenue trend
 
--Total revenue per year
-
--Total net income per year
-
--Most profitable week
-
--Average weekly revenue per year
-
--Weekly revenue trend
-
-- 4 png output files:
-
--Weekly net income 2024
-
--Weekly net income 2025
-
--Weekly revenue 2024
-
--Weekly revenue 2025
-
+- 4 png output files: Weekly net income 2024, Weekly net income 2025, Weekly revenue 2024, Weekly revenue 2025
 
 **Pipeline Capabilities**
 
