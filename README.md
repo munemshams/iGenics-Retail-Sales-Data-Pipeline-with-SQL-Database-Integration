@@ -43,7 +43,6 @@ This allows the full analytics workflow to be understood without exposing sensit
 | `README.md` | Project documentation describing the pipeline architecture and analytics workflow |
 | `etl_weekly_summary_to_mysql.py` | Python ETL pipeline that ingests raw sales data, cleans it, loads it into MySQL, and generates analytics outputs |
 | `SQL Queries.sql` | Collection of SQL queries used to generate financial analytics from the database |
-| `project_summary.txt` | Automatically generated summary file containing pipeline execution metrics and results |
 | `outputs/` | Folder containing generated analytics reports and visualizations |
 
 
