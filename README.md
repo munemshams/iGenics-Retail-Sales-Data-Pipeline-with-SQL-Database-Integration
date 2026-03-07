@@ -1,108 +1,231 @@
-**Project Overview**
+# iGenics Sales Data Pipeline
 
-This project implements a complete end-to-end ETL and analytics pipeline for iGenics, a U.S manufactured, GMP-certified health supplement.
-Using Python and MySQL, the workflow ingests 83 weeks of raw weekly sales data, cleans and standardizes it, loads it into a relational database, and produces SQL-driven financial analytics and visual dashboards.
+This project implements a complete **end-to-end ETL and analytics pipeline** for **iGenics**, a U.S.-manufactured, GMP-certified health supplement product.  
 
-The pipeline demonstrates real-world skills in:
+Using **Python and MySQL**, the system ingests raw weekly sales reports, cleans and standardizes the data, loads it into a relational database, and performs SQL-based financial analytics and visual reporting.
 
-- Data engineering (ETL pipelines, automation)
+The pipeline processes **83 weeks of historical sales data** and produces structured outputs that support business performance analysis and decision making.
 
-- SQL analytics (MySQL queries, exports)
+---
 
-- Python development (pandas, numpy, regex, SQLAlchemy)
+# Project Overview
 
-- Data visualization (matplotlib)
+The project demonstrates practical skills in modern **data engineering and analytics workflows**, including:
 
-- Business performance analysis
+- ETL pipeline development
+- Automated data ingestion and cleaning
+- Relational database design and loading
+- SQL-based financial analytics
+- Python-based visualization and reporting
 
-**Data Privacy Notice**
+The system converts unstructured weekly summary reports into a **structured analytics dataset** suitable for database querying and business intelligence.
 
-Raw source datasets are excluded due to proprietary restrictions.
-A cleaned dataset sample and complete pipeline logic are provided for demonstration purposes.
+---
 
-**Files Included**
+# Data Privacy Notice
 
-- README.md → Project documentation
+Raw source datasets are excluded from this repository due to **proprietary business restrictions**.
 
-- etl_weekly_summary_to_mysql.py → Raw python script used to create Python based ETL Pipeline and SQL Database
+To maintain transparency and reproducibility:
 
-- SQL Queries → Raw SQL Queries compiled together
+- The **complete ETL pipeline code** is included
+- A **cleaned dataset sample** is provided
+- All **SQL analytics queries** and generated outputs are included
 
-- project_summary.txt → output summary file rendered from python script
+This allows the full analytics workflow to be understood without exposing sensitive source data.
 
-- 5 CSV output files : Total revenue per year, Total net income per year, Most profitable week, Average weekly revenue per year, Weekly revenue trend
+---
 
-- 4 png output files: Weekly net income 2024, Weekly net income 2025, Weekly revenue 2024, Weekly revenue 2025
+# Files Included
 
-**Pipeline Capabilities**
+| File / Folder | Description |
+|---------------|-------------|
+| `README.md` | Project documentation describing the pipeline architecture and analytics workflow |
+| `etl_weekly_summary_to_mysql.py` | Python ETL pipeline that ingests raw sales data, cleans it, loads it into MySQL, and generates analytics outputs |
+| `SQL Queries.sql` | Collection of SQL queries used to generate financial analytics from the database |
+| `project_summary.txt` | Automatically generated summary file containing pipeline execution metrics and results |
+| `outputs/` | Folder containing generated analytics reports and visualizations |
+| `outputs/*.csv` | SQL analytics exports including revenue summaries and weekly metrics |
+| `outputs/*.png` | Visual dashboards showing revenue and net income trends |
 
-**ETL Processing (Python)**
+---
 
-The ETL system:
+# Project Workflow
 
-- Reads and validates all raw CSV sales files
+The system follows a structured **data engineering pipeline** designed to simulate real-world business analytics workflows.
 
-- Standardizes currency values and numeric formats
+## 1. Data Ingestion
 
-- Parses week and year from labels like “Week 01, 2024”
+Raw weekly sales CSV files are automatically discovered and loaded by the ETL script.
 
-- Removes formatting inconsistencies and wide-format columns
+The ingestion process:
 
-- Transforms weekly summaries into long-format analytical tables
+- Detects all raw CSV files in the dataset directory
+- Reads multiple file encodings
+- Combines all weekly reports into a single dataset
+- Tracks source files for traceability
 
-- Saves a cleaned dataset for reproducibility
+---
 
-**Database Integration (MySQL)**
+## 2. Data Cleaning and Standardization
 
-- During execution, the script automatically creates a MySQL database (if not present)
+The ETL pipeline transforms raw weekly reports into a structured format suitable for analytics.
 
-- It Loads:
+Cleaning steps include:
 
-1. weekly_summary_raw — raw ingested data
+- Removing formatting inconsistencies
+- Standardizing currency values (e.g., `$2,345` → `2345`)
+- Converting accounting-style negative numbers `(1,234)`
+- Removing corrupted or unnamed columns
+- Normalizing metric names
 
-2. weekly_metrics_clean — normalized long-format dataset
+---
 
-- Executes SQL analytics queries through SQLAlchemy
+## 3. Data Transformation
 
-**SQL Analytics Performed**
+The raw wide-format reports are reshaped into a **long-format analytical dataset**.
 
-After loading data into MySQL, the pipeline executes several analytics queries and exports them as CSV reports:
+Transformations include:
 
-1. Total revenue per year
+- Parsing week and year from labels such as `Week 01, 2024`
+- Extracting product channel identifiers (`CB`, `BG`, `DS`, `Total`)
+- Creating normalized metric fields
+- Producing structured time-series records
 
-2. Total net income per year
+This results in a dataset optimized for **SQL analytics and time-series analysis**.
 
-3. Most profitable week
+---
 
-4. Average weekly revenue per year
+## 4. Database Integration (MySQL)
 
-5. Weekly revenue trend (for visualization)
+The ETL pipeline automatically creates and populates a **MySQL database**.
 
-**Visual Dashboards**
+Two database tables are generated:
 
-Using matplotlib, the pipeline generates:
+**weekly_summary_raw**
 
-1. Annual revenue charts
+Stores the original ingested weekly reports.
 
-2. Annual net income charts
+**weekly_metrics_clean**
 
+Stores the cleaned and normalized analytical dataset used for SQL queries.
 
-**Key Outcomes**
+Database creation and loading are handled automatically using **SQLAlchemy**.
 
-- Automated ingestion, cleaning, and transformation of 83 weeks of sales data
+The ETL pipeline implementation is available in:  
+:contentReference[oaicite:0]{index=0}
 
-- Loaded all processed data into a structured MySQL database
+---
 
-- Produced 5 SQL-based analytics reports
+# SQL Analytics Queries
 
-- Generated year-segmented visual dashboards for clear performance comparison
+After the dataset is loaded into MySQL, several SQL analytics queries are executed to produce financial insights.
 
-- Derived business insights:
+The queries are stored in:  
+:contentReference[oaicite:1]{index=1}
 
-1. Revenue (2024): $854,969
+## Queries Included
 
-2. Revenue (Jan–Jul 2025): $775,592
+### Total Revenue per Year
 
-3. Net Income (2024): $188,184
+Calculates total annual revenue across all sales channels.
 
-4. Net Income (2025 Jan–Jul): $169,276
+### Total Net Income per Year
+
+Computes total yearly net income.
+
+### Most Profitable Week
+
+Identifies the week with the highest net income.
+
+### Average Weekly Revenue per Year
+
+Calculates the average weekly revenue for each year.
+
+### Weekly Revenue Trend
+
+Produces time-series revenue data used for visualization dashboards.
+
+---
+
+# Data Visualization
+
+The pipeline generates visual dashboards using **Matplotlib**.
+
+Visual outputs include:
+
+- Weekly revenue trends
+- Weekly net income trends
+- Year-segmented performance charts
+
+These visualizations provide an intuitive overview of sales performance across time.
+
+---
+
+# Python Libraries Used
+
+The ETL pipeline was implemented using the following Python libraries:
+
+| Library | Purpose |
+|--------|--------|
+| pandas | Data ingestion, transformation, and analysis |
+| numpy | Numerical processing and data handling |
+| matplotlib | Visualization of financial metrics |
+| SQLAlchemy | Database connection and SQL execution |
+| PyMySQL | MySQL database driver |
+| python-dotenv | Secure database credential management |
+| glob | Automatic discovery of dataset files |
+| re (regex) | Parsing week and year information |
+| os | File system and directory management |
+
+---
+
+# Key Outcomes
+
+The pipeline successfully automated the full analytics workflow for iGenics sales data.
+
+Key outputs include:
+
+- Automated ingestion and processing of **83 weeks of sales data**
+- Creation of a structured **MySQL analytics database**
+- Generation of **5 SQL-based analytics reports**
+- Production of **visual dashboards for financial trends**
+
+---
+
+# Business Insights
+
+The analysis produced the following key financial insights:
+
+**Revenue**
+
+2024 Revenue: **$854,969**
+
+2025 Revenue (Jan–Jul): **$775,592**
+
+**Net Income**
+
+2024 Net Income: **$188,184**
+
+2025 Net Income (Jan–Jul): **$169,276**
+
+These metrics provide a clear overview of the product’s financial performance across the analyzed time period.
+
+---
+
+# Technologies Used
+
+Python  
+MySQL  
+SQLAlchemy  
+Pandas  
+NumPy  
+Matplotlib  
+
+---
+
+# Author
+
+**Munem Shariar Shams**
+
+Data Analytics | Data Engineering | SQL | Python
